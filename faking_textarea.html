@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[*Bài tập] Ứng dụng vui Faking Textarea on Typing</title>
+    <style>
+        body {
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* #fake_text {
+            padding: 2px;
+            margin-left: 0;
+            margin-right: 0;
+            border: 1px solid;
+        } */
+        textarea {
+            margin: auto;
+            display: block;
+            width: 304px;
+        }
+    </style>
+</head>
+
+<body onload="fake()" style="text-align: center;">
+    <h1>Type anthing slowly</h1>
+    <textarea name="" id="fake_text" cols="30" rows="10"></textarea>
+
+    <script>
+        
+        const inputText = 'TÔI LÀ MỘT ĐỨA NGỐC!!';
+        const arr = inputText.split('');
+        // let array = [];
+        let str = "";
+        console.log(arr);
+
+        function fake() {
+            let text = document.getElementById("fake_text").value;
+            let j = text.length;
+            if (j > 0) {
+                for (let i = 0; i < j; i++) {
+                    str = str + arr[i];
+                    if (i === (arr.length-1)) {
+                        document.getElementById("fake_text").value = "";
+                        str = "";
+                    }
+                }
+            }
+            document.getElementById("fake_text").value = str;
+            str = "";
+            setTimeout("fake()", 1);
+        }
+    </script>
+</body>
+
+</html>
